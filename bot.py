@@ -4,7 +4,7 @@ from functools import partial
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from dotenv import load_dotenv
-from google.cloud import dialogflow
+from dialogflow_bot import get_dialogflow_response_text
 
 
 def start(update: Update, context: CallbackContext):
@@ -12,19 +12,6 @@ def start(update: Update, context: CallbackContext):
     update.message.reply_markdown_v2(
         fr'Здравствуй, {user.mention_markdown_v2()}\!'
     )
-
-
-def get_dialogflow_response_text(project_id, session_id, text, language_code):
-    session_client = dialogflow.SessionsClient()
-    session = session_client.session_path(project_id, session_id)
-
-    text_input = dialogflow.TextInput(text=text, language_code=language_code)
-    query_input = dialogflow.QueryInput(text=text_input)
-
-    response = session_client.detect_intent(
-        request={"session": session, "query_input": query_input}
-    )
-    return response.query_result.fulfillment_text
 
 
 def send_reply(update: Update, context: CallbackContext, project_id, session_id):
