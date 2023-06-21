@@ -4,6 +4,7 @@ from functools import partial
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from dotenv import load_dotenv
+
 from dialogflow_bot import get_dialogflow_response_text
 
 
