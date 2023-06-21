@@ -5,7 +5,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from dotenv import load_dotenv
 
-from dialogflow_bot import get_dialogflow_response_text
+from dialogflow_bot import get_dialogflow_response
 
 
 def start(update: Update, context: CallbackContext):
@@ -16,8 +16,13 @@ def start(update: Update, context: CallbackContext):
 
 
 def send_reply(update: Update, context: CallbackContext, project_id, session_id):
+    dialogflow_response = get_dialogflow_response(
+        project_id,
+        session_id,
+        update.message.text
+    )
     update.message.reply_text(
-        get_dialogflow_response_text(project_id, session_id, update.message.text, 'ru')
+        dialogflow_response.query_result.fulfillment_text
     )
 
 

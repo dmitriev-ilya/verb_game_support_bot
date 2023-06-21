@@ -5,7 +5,7 @@ from google.cloud import dialogflow
 from dotenv import load_dotenv
 
 
-def get_dialogflow_response_text(project_id, session_id, text, language_code):
+def get_dialogflow_response(project_id, session_id, text, language_code='ru'):
     session_client = dialogflow.SessionsClient()
     session = session_client.session_path(project_id, session_id)
 
@@ -15,7 +15,7 @@ def get_dialogflow_response_text(project_id, session_id, text, language_code):
     response = session_client.detect_intent(
         request={"session": session, "query_input": query_input}
     )
-    return response.query_result.fulfillment_text
+    return response
 
 
 def create_intent(project_id, display_name, training_phrases_parts, message_texts):
