@@ -22,7 +22,7 @@ GOOGLE_APPLICATION_CREDENTIALS=<credential path>
 
 Для получения `GCLOUD_PROJECT_ID` необходимо создать проект на Google Cloud согласно [инструкции](https://cloud.google.com/dialogflow/es/docs/quick/setup), а затем агента [Dialogflow](https://cloud.google.com/dialogflow/es/docs/quick/build-agent). **Важно, чтобы ID проектов Dialogflow и Google Cloud совпадали!!!**. 
 
-Создайте `API-Key` согласно [туториалу](https://cloud.google.com/sdk/docs/install) и добавьте путь к `credentials.json` в переменную `GOOGLE_APPLICATION_CREDENTIALS`.
+Создайте `API-Key` согласно [туториалу](https://cloud.google.com/docs/authentication/api-keys) и добавьте путь к `credentials.json` в переменную `GOOGLE_APPLICATION_CREDENTIALS`.
 
 
 Также необходимо создать Telegram-бота для получения `SUPPORT_BOT_TELEGRAM_TOKEN`. Для этого нужно обратиться к [@BotFather](https://telegram.me/BotFather). Подробная инструкция по настройке и созданию бота приведена здесь - [Инструкция по созданию Telegram-бота](https://way23.ru/%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0-%D0%B2-telegram.html)
