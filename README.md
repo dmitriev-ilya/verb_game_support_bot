@@ -3,6 +3,14 @@
 Проект включает в себя ботов поддержки для Telegram и VK, основанные на ИИ от Google - [Dialogflow](https://dialogflow.com/).
 Боты предназначены для автоматизации техподдержки пользователей: ответы на самые распространённые вопросы с помощью предобученной модели ИИ.
 
+Пример рабочего Telegram-бота [@VerbGameSupportBot](https://t.me/VerbGameSupportBot):
+
+![image](https://dvmn.org/media/filer_public/7a/08/7a087983-bddd-40a3-b927-a43fb0d2f906/demo_tg_bot.gif)
+
+Пример рабочего VK-бота https://vk.com/club221222850 :
+
+![image](https://dvmn.org/media/filer_public/1e/f6/1ef61183-56ad-4094-b3d0-21800bdb8b09/demo_vk_bot.gif)
+
 ## Установка
 
 Скачайте файлы из репозитория. Python3 должен быть уже установлен. 
