@@ -45,10 +45,5 @@ python3 dialogflow_bot.py
 Для запуска ботов в консоли, находясь в папке с проектом, используйте следующую команду:
 
 ```
-python3 vk_bot.py
-```
-или
-
-```
-python3 telegram_bot.py
+python3 telegram_bot.py & python3 vk_bot.py
 ```
