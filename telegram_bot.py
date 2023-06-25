@@ -47,10 +47,8 @@ if __name__ == '__main__':
     gcloud_project_id = os.environ['GCLOUD_PROJECT_ID']
     session_id = os.environ['TELEGRAM_USER_ID']
 
-    tg_bot = telegram.Bot(token=telegram_bot_token)
-
     logger.setLevel(logging.INFO)
-    logger.addHandler(SupportBotLogsHandler(tg_bot, session_id))
+    logger.addHandler(SupportBotLogsHandler(telegram_bot_token, session_id))
 
     updater = Updater(telegram_bot_token)
 

@@ -6,7 +6,6 @@ from time import sleep
 import vk_api as vk
 from vk_api.longpoll import VkLongPoll, VkEventType
 from dotenv import load_dotenv
-import telegram
 
 from dialogflow_bot import get_dialogflow_response
 from logger import SupportBotLogsHandler
@@ -34,7 +33,7 @@ if __name__ == '__main__':
     load_dotenv()
     vk_group_api_token = os.environ['VK_GROUP_API_TOKEN']
     gcloud_project_id = os.environ['GCLOUD_PROJECT_ID']
-    session_id = os.environ['TELEGRAM_USER_ID']
+    telegram_chat_id = os.environ['TELEGRAM_USER_ID']
     telegram_bot_token = os.environ['SUPPORT_BOT_TELEGRAM_TOKEN']
 
     vk_session = vk.VkApi(token=vk_group_api_token)
@@ -42,13 +41,12 @@ if __name__ == '__main__':
     vk_api = vk_session.get_api()
     longpoll = VkLongPoll(vk_session)
 
-    tg_bot = telegram.Bot(token=telegram_bot_token)
-
     logger.setLevel(logging.INFO)
-    logger.addHandler(SupportBotLogsHandler(tg_bot, session_id))
+    logger.addHandler(SupportBotLogsHandler(telegram_bot_token, telegram_chat_id))
 
     logger.info('ВК-бот запущен')
 
+    session_id = telegram_chat_id
     while True:
         try:
             for event in longpoll.listen():

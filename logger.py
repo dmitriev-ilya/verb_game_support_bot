@@ -1,12 +1,13 @@
 import logging
+import telegram
 
 
 class SupportBotLogsHandler(logging.Handler):
 
-    def __init__(self, tg_bot, chat_id):
+    def __init__(self, telegram_bot_token, chat_id):
         super().__init__()
         self.chat_id = chat_id
-        self.tg_bot = tg_bot
+        self.tg_bot = telegram.Bot(token=telegram_bot_token)
 
     def emit(self, record):
         log_entry = self.format(record)
