@@ -46,11 +46,11 @@ if __name__ == '__main__':
 
     logger.info('ВК-бот запущен')
 
-    session_id = telegram_chat_id
     while True:
         try:
             for event in longpoll.listen():
                 if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+                    session_id = f'vk-{event.user_id}'
                     send_reply(event, vk_api, gcloud_project_id, session_id)
         except Exception as err:
             logger.error('ВК-бот упал с ошибкой:')

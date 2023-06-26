@@ -36,10 +36,11 @@ if __name__ == '__main__':
     load_dotenv()
     telegram_bot_token = os.environ['SUPPORT_BOT_TELEGRAM_TOKEN']
     gcloud_project_id = os.environ['GCLOUD_PROJECT_ID']
-    session_id = os.environ['TELEGRAM_USER_ID']
+    telegram_chat_id = os.environ['TELEGRAM_USER_ID']
+    session_id = f'tg-{telegram_chat_id}'
 
     logger.setLevel(logging.INFO)
-    logger.addHandler(SupportBotLogsHandler(telegram_bot_token, session_id))
+    logger.addHandler(SupportBotLogsHandler(telegram_bot_token, telegram_chat_id))
 
     try:
         updater = Updater(telegram_bot_token)
