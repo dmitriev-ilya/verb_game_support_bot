@@ -47,8 +47,8 @@ if __name__ == '__main__':
     load_dotenv()
     gcloud_project_id = os.environ['GCLOUD_PROJECT_ID']
 
-    with open("questions.json", "r") as my_file:
-        questions_json = my_file.read()
+    with open("questions.json", "r") as intent_file:
+        questions_json = intent_file.read()
 
     questions = json.loads(questions_json)
 
