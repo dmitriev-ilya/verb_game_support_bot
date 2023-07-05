@@ -1,7 +1,6 @@
 import os
 from functools import partial
 import logging
-from time import sleep
 
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
@@ -21,7 +20,9 @@ def start(update: Update, context: CallbackContext):
     )
 
 
-def send_reply(update: Update, context: CallbackContext, project_id, session_id):
+def send_reply(update: Update, context: CallbackContext, project_id):
+    session_id = f'tg-{update.message.from_user["id"]}'
+
     dialogflow_response = get_dialogflow_response(
         project_id,
         session_id,
@@ -37,7 +38,6 @@ if __name__ == '__main__':
     telegram_bot_token = os.environ['SUPPORT_BOT_TELEGRAM_TOKEN']
     gcloud_project_id = os.environ['GCLOUD_PROJECT_ID']
     telegram_chat_id = os.environ['TELEGRAM_USER_ID']
-    session_id = f'tg-{telegram_chat_id}'
 
     logger.setLevel(logging.INFO)
     logger.addHandler(SupportBotLogsHandler(telegram_bot_token, telegram_chat_id))
@@ -50,7 +50,7 @@ if __name__ == '__main__':
         dispatcher.add_handler(
             MessageHandler(
                 Filters.text & ~Filters.command,
-                partial(send_reply, project_id=gcloud_project_id, session_id=session_id)
+                partial(send_reply, project_id=gcloud_project_id)
             )
         )
 
